@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Japanese Flash Cards</title>
+</head>
+
+<body>
+    <header>
+        <h1>Japanese Flash Cards</h1>
+        <h3>日本語フラッシュカード</h2>
+        
+            <nav class="links">
+                <div class="footer-btn"><a href="#">Kanji</a></div>
+                <div class="footer-btn"><a href="#">Hirigana Vocab</a></div>
+                <div class="footer-btn"><a href="#">Romanji Vocab</a></div>
+            </nav>
+    </header>
+
+    <main>
+        <div class="box">
+            <h2>Vocab word goes here</h2>
+            <form>
+                <label  for="userAnswer" class="screen-reader-text">Answer</label>
+                <input class="userAnswer" type="text" name="userAnswer" id="userAnswer" placeholder="Answer">
+                <input class="submit-btn" type="submit" value="submit">
+            </form>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="index.js"></script>
+    <script src="jquery-csv.js"></script>
+</body>
+
+</html>

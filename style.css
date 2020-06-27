@@ -1,0 +1,93 @@
+* {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+    background-color: lightgrey;
+}
+
+.screen-reader-text { 
+    border:0;   
+    clip: rect(1px, 1px, 1px, 1px); 
+    clip-path: inset(50%);
+    height: 1px; 
+    margin: -1px;
+    width: 1px; 
+    overflow: hidden; 
+    position: absolute !important;
+    word-wrap:normal !important;
+ }
+
+header {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: -10px;
+    font-weight: 700;
+    font-size: 32pt;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 14pt;
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16;
+    text-align: center;
+    margin-right: 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    background-color: white;
+    margin: auto;
+    padding: 50px 50px;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 24pt;
+    letter-spacing: 2px;
+    margin-top: -30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin: 20px 0;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.userAnswer {
+    width: 300px;
+    align-self: center;
+}
+
+.submit-btn {
+    width: 150px;
+    align-self: center;
+}
