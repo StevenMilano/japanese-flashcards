@@ -1,24 +1,20 @@
-var num = 0;
+let num = 0;
 
 function numOfWords () {
     $('.user-input').submit( event => {
         event.preventDefault();
         num = $('.user-answer').val();
         console.log(num);
-    
-    let i = 0;
-    while (i < num) {
-        i++;
+    });
+        
     $.get('/csv/japanese-flashcards-hirigana.csv')
         .then(data=>{
-            
+            for (let i = num; i < 3; i++) {
                 let result = Papa.parse(data);
                 let randNum = Math.floor(Math.random() * result.data.length);
                 console.log(result.data[randNum]);
-            
+            }
         })
-    }
-    });
          
     
 }
