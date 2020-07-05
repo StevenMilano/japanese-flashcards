@@ -22,25 +22,8 @@ function numOfWords () {
         getData.then(data=>{
             for (let j = 0; j < arrOfWords.length; j++) {
                 currentWord = arrOfWords[j][0];
-                if (answer === arrOfWords[j][1]) {
-                    $('.box').html(`
-                        <div class="box">
-                            <h2>Correct!</h2>
-                            <button type="button">Next</button>
-                        </div>
-                    `);
-                } else {
-                    $('.box').html(`
-                        <div class="box">
-                            <p>The correct answer is:</p>
-                            <h2>${arrOfWords[j][1]}</h2>
-                            <button type="button">Next</button>
-                        </div>
-                    `);
-                }
-            }
 
-            $('.box').html(`
+                $('.box').html(`
                 <div class="box">
                     <h2>${currentWord}</h2>
                     <form class="user-answer">
@@ -50,15 +33,41 @@ function numOfWords () {
                     </form>
                 </div>
             `);
+
+            $('user-answer').on('submit', event =>{
+                answer = $('.user-answer').val();
+                event.preventDefault(); 
+            });
+
+            
+
+            console.log(arrOfWords[j][1]);
+
+                if (answer == arrOfWords[j][1]) {
+                    $('.box').html(`
+                        <div class="box">
+                            <h2>Correct!</h2>
+                            <button type="button">Next</button>
+                        </div>
+                    `);
+                // } else {
+                //     $('.box').html(`
+                //         <div class="box">
+                //             <p>The correct answer is:</p>
+                //             <h2>${arrOfWords[j][1]}</h2>
+                //             <button type="button">Next</button>
+                //         </div>
+                //     `);
+                }
+            }
     });
 }
 
-function handleFlashcards(arrOfWords) {
+function handleFlashcards() {
     numOfWords();
 }
 
 $('.user-input').on('submit', event => {
     event.preventDefault(); 
-    $(handleFlashcards);
-   // answer = $('.user-answer').val();
+    handleFlashcards();
 });
