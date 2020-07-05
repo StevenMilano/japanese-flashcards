@@ -22,11 +22,22 @@ function numOfWords () {
         getData.then(data=>{
             for (let j = 0; j < arrOfWords.length; j++) {
                 currentWord = arrOfWords[j][0];
-                // if (answer === arrOfWords[j][1]) {
-                //     console.log("correct");
-                // } else {
-                //     console.log("inccorect");
-                // }
+                if (answer === arrOfWords[j][1]) {
+                    $('.box').html(`
+                        <div class="box">
+                            <h2>Correct!</h2>
+                            <button type="button">Next</button>
+                        </div>
+                    `);
+                } else {
+                    $('.box').html(`
+                        <div class="box">
+                            <p>The correct answer is:</p>
+                            <h2>${arrOfWords[j][1]}</h2>
+                            <button type="button">Next</button>
+                        </div>
+                    `);
+                }
             }
 
             $('.box').html(`
@@ -46,7 +57,7 @@ function handleFlashcards(arrOfWords) {
     numOfWords();
 }
 
-$('.user-input').on('submit', '.submit-btn', event => {
+$('.user-input').on('submit', event => {
     event.preventDefault(); 
     $(handleFlashcards);
    // answer = $('.user-answer').val();
