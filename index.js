@@ -37,12 +37,6 @@ function numOfWords () {
             $('user-answer').on('submit', event =>{
                 answer = $('.user-answer').val();
                 event.preventDefault(); 
-            });
-
-            
-
-            console.log(arrOfWords[j][1]);
-
                 if (answer == arrOfWords[j][1]) {
                     $('.box').html(`
                         <div class="box">
@@ -59,6 +53,14 @@ function numOfWords () {
                 //         </div>
                 //     `);
                 }
+
+            });
+
+            
+
+            console.log("DEBUG (Line 44): ", arrOfWords[j][1]);
+
+                
             }
     });
 }
