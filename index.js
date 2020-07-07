@@ -27,34 +27,51 @@ function numOfWords () {
                 <div class="box">
                     <h2>${currentWord}</h2>
                     <form class="user-answer">
-                            <label  for="user-answer" class="screen-reader-text" aria-required="true">Answer</label>
-                            <input class="user-answer" type="text" name="user-answer" id="user-answer" required placeholder="Answer">
+                            <label  for="user-answer1" class="screen-reader-text" aria-required="true">Answer</label>
+                            <input class="user-answer1" type="text" name="user-answer1" id="user-answer" required placeholder="Answer">
                             <input class="submit-btn" type="submit" value="submit">
                     </form>
                 </div>
             `);
 
-            $('user-answer').on('submit', event =>{
-                answer = $('.user-answer').val();
+            $('.user-answer').on('submit', event =>{
+                answer = $('.user-answer1').val();
                 event.preventDefault(); 
+                console.log(answer);
                 if (answer == arrOfWords[j][1]) {
                     $('.box').html(`
                         <div class="box">
                             <h2>Correct!</h2>
-                            <button type="button">Next</button>
+                            <button class="next" type="button">Next</button>
                         </div>
                     `);
-                // } else {
-                //     $('.box').html(`
-                //         <div class="box">
-                //             <p>The correct answer is:</p>
-                //             <h2>${arrOfWords[j][1]}</h2>
-                //             <button type="button">Next</button>
-                //         </div>
-                //     `);
+                    
+                } else {
+                    $('.box').html(`
+                        <div class="box">
+                            <p>The correct answer is:</p>
+                            <h2>${arrOfWords[j][1]}</h2>
+                            <button class="next" type="button">Next</button>
+                        </div>
+                    `);
                 }
 
             });
+
+            //function in function?
+                $('.next').on('submit', event => {
+                    event.preventDefault();
+                    $('.box').html(`
+                        <div class="box">
+                            <h2>${currentWord}</h2>
+                            <form>
+                                    <label  for="user-answer" class="screen-reader-text" aria-required="true">Answer</label>
+                                    <input class="user-answer" type="text" name="user-answer" id="user-answer" required placeholder="Answer">
+                                    <input class="submit-btn" type="submit" value="submit">
+                            </form>
+                        </div>
+                    `);
+                });
 
             
 
