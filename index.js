@@ -15,7 +15,7 @@ function numOfWords () {
         num = $('#num-of-words').val();
         getData.then(data=>{
             var result = Papa.parse(data);
-                for (let i = 0; i < num; i++) {
+                for (let j = 0; j < num; j++) {
                     let randNum = Math.floor(Math.random() * result.data.length);
                     arrOfWords = [...arrOfWords, result.data[randNum]]; 
                 }
@@ -40,7 +40,8 @@ function numOfWords () {
                 show = !show;
                 answer = $('#user-answer').val();
                 console.log("debug", answer);
-                    if (answer == arrOfWords[i][1] && arrOfWords[i] <= arrOfWords.length) {
+                console.log('debug 1', arrOfWords);
+                    if (answer == arrOfWords[i][1] /*&& arrOfWords[i] <= arrOfWords.length*/) {
                         $('#correct').addClass("show").removeClass("hide");
                         $('#display-word').html('');
                         $('#user-answer').removeClass("show").addClass("hide");
@@ -48,7 +49,7 @@ function numOfWords () {
                         $('#next').addClass("show").removeClass("hide");
                         $('#user-answer').val('');
                         //correctAns++;
-                    } else if(answer != arrOfWords[i][1] && arrOfWords[i] <= arrOfWords.length) {
+                    } else if(answer != arrOfWords[i][1] /*&& arrOfWords[i] <= arrOfWords.length*/) {
                         $('#incorrect').addClass("show").removeClass("hide");
                         $('#display-word').html('');
                         $('.user-input').removeClass(".user-input").addClass("hide");
