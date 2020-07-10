@@ -39,9 +39,8 @@ function numOfWords () {
             $('.submit-btn').on('click', event =>{
                 show = !show;
                 answer = $('#user-answer').val();
-                console.log("debug", answer);
-                console.log('debug 1', arrOfWords);
-                    if (answer == arrOfWords[i][1] /*&& arrOfWords[i] <= arrOfWords.length*/) {
+                console.log("debug", answer, arrOfWords[i], i);
+                    if (i <= arrOfWords.length && answer == arrOfWords[i][1]  ) {
                         $('#correct').addClass("show").removeClass("hide");
                         $('#display-word').html('');
                         $('#user-answer').removeClass("show").addClass("hide");
@@ -49,7 +48,7 @@ function numOfWords () {
                         $('#next').addClass("show").removeClass("hide");
                         $('#user-answer').val('');
                         //correctAns++;
-                    } else if(answer != arrOfWords[i][1] /*&& arrOfWords[i] <= arrOfWords.length*/) {
+                    } else if(i <= arrOfWords.length && answer != arrOfWords[i][1] ) {
                         $('#incorrect').addClass("show").removeClass("hide");
                         $('#display-word').html('');
                         $('.user-input').removeClass(".user-input").addClass("hide");
@@ -59,7 +58,7 @@ function numOfWords () {
                                 <p>The correct answer is:</p>
                                 <h2>${arrOfWords[i][1]}</h2>
                         `);
-                    } else if(i => arrOfWords.length) {
+                    } else if(i >= arrOfWords.length) {
                         //$('#final-score').addClass("show").removeClass("hide");
                         $('#incorrect').removeClass("show").addClass("hide");
                         $('#correct').removeClass("show").addClass("hide");
@@ -79,8 +78,8 @@ function numOfWords () {
                 });
 
             });
-            console.log(arrOfWords);   
-            console.log(i);
+            //console.log(arrOfWords);   
+            //console.log(i);
     });
 }
 
