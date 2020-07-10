@@ -24,10 +24,16 @@
 
     <main>
         <div class="box">
-            <h2>How many words would you like to study</h2>
+            <h2 class="show" id="num-of-words-header">How many words would you like to study</h2>
+            <h2 class="hide" id="display-word">Vocab Word here</h2>
+            <h2 class="hide" id="correct">Correct!</h2>
+            <h2 class="hide" id="incorrect">The correct answer is:</h2>
+            <h2 class="hide" id="final-score">Your final score is:</h2>
+            <p class="show" id="current-score"></p>
+            <input type='button' value='Next' id='next' class="hide">
             <form class="user-input">
-                <label  for="user-num" class="screen-reader-text" aria-required="true">Answer</label>
-                <input class="user-num" type="number" name="user-num" id="user-num" required placeholder="Select a number of Vocab words.">
+                <label  for="num-of-words" class="screen-reader-text" aria-required="true">Select a number of Vocab words.</label>
+                <input class="show" id="num-of-words" type="text" name="num-of-words" placeholder="Select a number of Vocab words.">
                 <input class="submit-btn" type="submit" value="submit">
             </form>
         </div>

@@ -1,6 +1,8 @@
+let i = 0;
 let num = 0;
-let arr = null;
 let answer = "";
+let correctAns = 0;
+let show = true;
 let getData = $.get('/csv/japanese-flashcards-hirigana.csv')
 let arrOfWords = [];
 let currentWord = "";
@@ -9,84 +11,84 @@ let currentWord = "";
 //when handeling or manipulating the csv, it has to be done in this fucntion
 function numOfWords () {
     //recieves amount of words user wants and picks randomly from given csv
-        num = $('.user-num').val();
+        //$('#current-score').html(`${correctAns}/${num}`);
+        num = $('#num-of-words').val();
         getData.then(data=>{
             var result = Papa.parse(data);
                 for (let i = 0; i < num; i++) {
                     let randNum = Math.floor(Math.random() * result.data.length);
                     arrOfWords = [...arrOfWords, result.data[randNum]]; 
-                    console.log(num);
                 }
             });
 
         getData.then(data=>{
-            for (let j = 0; j < arrOfWords.length; j++) {
-                currentWord = arrOfWords[j][0];
+            console.log('test');
+            if (show){
+                $('#display-word').html(`<h2>${arrOfWords[i][0]}</h2>`);
+            }
 
-                $('.box').html(`
-                <div class="box">
-                    <h2>${currentWord}</h2>
-                    <form class="user-answer">
-                            <label  for="user-answer1" class="screen-reader-text" aria-required="true">Answer</label>
-                            <input class="user-answer1" type="text" name="user-answer1" id="user-answer" required placeholder="Answer">
-                            <input class="submit-btn" type="submit" value="submit">
-                    </form>
-                </div>
-            `);
+            $('.user-input').html(`
+                <label  for="user-answer" class="screen-reader-text" aria-required="true">Answer</label>
+                <input class="show" type="text" name="user-answer" id="user-answer" placeholder="Answer">
+                <input class="submit-btn" type="submit" value="submit">
+            `)
+                        
+            $('#display-word').addClass("show").removeClass("hide");
+            $('#num-of-words-header').removeClass("show").addClass("hide");
 
-            $('.user-answer').on('submit', event =>{
-                answer = $('.user-answer1').val();
-                event.preventDefault(); 
-                console.log(answer);
-                if (answer == arrOfWords[j][1]) {
-                    $('.box').html(`
-                        <div class="box">
-                            <h2>Correct!</h2>
-                            <button class="next" type="button">Next</button>
-                        </div>
-                    `);
-                    
-                } else {
-                    $('.box').html(`
-                        <div class="box">
-                            <p>The correct answer is:</p>
-                            <h2>${arrOfWords[j][1]}</h2>
-                            <button class="next" type="button">Next</button>
-                        </div>
-                    `);
-                }
+            $('.submit-btn').on('click', event =>{
+                show = !show;
+                answer = $('#user-answer').val();
+                console.log("debug", answer);
+                    if (answer == arrOfWords[i][1] && arrOfWords[i] <= arrOfWords.length) {
+                        $('#correct').addClass("show").removeClass("hide");
+                        $('#display-word').html('');
+                        $('#user-answer').removeClass("show").addClass("hide");
+                        $('.user-input').removeClass(".user-input").addClass("hide");
+                        $('#next').addClass("show").removeClass("hide");
+                        $('#user-answer').val('');
+                        //correctAns++;
+                    } else if(answer != arrOfWords[i][1] && arrOfWords[i] <= arrOfWords.length) {
+                        $('#incorrect').addClass("show").removeClass("hide");
+                        $('#display-word').html('');
+                        $('.user-input').removeClass(".user-input").addClass("hide");
+                        $('#user-answer').removeClass("show").addClass("hide").val('');
+                        $('#next').addClass("show").removeClass("hide");
+                        $('#incorrect').html(`
+                                <p>The correct answer is:</p>
+                                <h2>${arrOfWords[i][1]}</h2>
+                        `);
+                    } else if(i => arrOfWords.length) {
+                        //$('#final-score').addClass("show").removeClass("hide");
+                        $('#incorrect').removeClass("show").addClass("hide");
+                        $('#correct').removeClass("show").addClass("hide");
+                        $("#next").prop('value', 'Play again');
 
-            });
+                    }  
 
-            //function in function?
-                $('.next').on('submit', event => {
-                    event.preventDefault();
-                    $('.box').html(`
-                        <div class="box">
-                            <h2>${currentWord}</h2>
-                            <form>
-                                    <label  for="user-answer" class="screen-reader-text" aria-required="true">Answer</label>
-                                    <input class="user-answer" type="text" name="user-answer" id="user-answer" required placeholder="Answer">
-                                    <input class="submit-btn" type="submit" value="submit">
-                            </form>
-                        </div>
-                    `);
+                $('#next').on('click', event => {
+                    i++; 
+                    $('#display-word').addClass("show").removeClass("hide").html(`<h2>${arrOfWords[i][0]}</h2>`);
+                    $('.user-input').removeClass("hide");
+                    $('#user-answer').addClass("show").removeClass("hide");
+                    $('#next').removeClass("show").addClass("hide");
+                    $('#correct').removeClass("show").addClass("hide");
+                    $('#incorrect').removeClass("show").addClass("hide");
+                    show = !show;
                 });
 
-            
-
-            console.log("DEBUG (Line 44): ", arrOfWords[j][1]);
-
-                
-            }
+            });
+            console.log(arrOfWords);   
+            console.log(i);
     });
 }
+
 
 function handleFlashcards() {
     numOfWords();
 }
 
-$('.user-input').on('submit', event => {
+$('.user-input').submit(event => {
     event.preventDefault(); 
     handleFlashcards();
 });
