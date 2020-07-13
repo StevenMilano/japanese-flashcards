@@ -22,7 +22,7 @@ function numOfWords () {
             });
 
         getData.then(data=>{
-            console.log('test');
+            console.log(i);
             if (show){
                 $('#display-word').html(`<h2>${arrOfWords[i][0]}</h2>`);
             }
@@ -39,8 +39,8 @@ function numOfWords () {
             $('.submit-btn').on('click', event =>{
                 show = !show;
                 answer = $('#user-answer').val();
-                console.log("debug", answer, arrOfWords[i], i);
-                    if (i <= arrOfWords.length && answer == arrOfWords[i][1]  ) {
+                console.log("debug", answer, arrOfWords, i);
+                    if (i <= arrOfWords.length && answer == arrOfWords[i][1]) {
                         $('#correct').addClass("show").removeClass("hide");
                         $('#display-word').html('');
                         $('#user-answer').removeClass("show").addClass("hide");
@@ -48,7 +48,7 @@ function numOfWords () {
                         $('#next').addClass("show").removeClass("hide");
                         $('#user-answer').val('');
                         //correctAns++;
-                    } else if(i <= arrOfWords.length && answer != arrOfWords[i][1] ) {
+                    } else if(i <= arrOfWords.length && answer != arrOfWords[i][1]) {
                         $('#incorrect').addClass("show").removeClass("hide");
                         $('#display-word').html('');
                         $('.user-input').removeClass(".user-input").addClass("hide");
@@ -58,7 +58,7 @@ function numOfWords () {
                                 <p>The correct answer is:</p>
                                 <h2>${arrOfWords[i][1]}</h2>
                         `);
-                    } else if(i >= arrOfWords.length) {
+                    } else /*if(i >= arrOfWords.length) */{
                         //$('#final-score').addClass("show").removeClass("hide");
                         $('#incorrect').removeClass("show").addClass("hide");
                         $('#correct').removeClass("show").addClass("hide");
@@ -67,19 +67,23 @@ function numOfWords () {
                     }  
 
                 $('#next').on('click', event => {
-                    i++; 
-                    $('#display-word').addClass("show").removeClass("hide").html(`<h2>${arrOfWords[i][0]}</h2>`);
+                    if (i < arrOfWords.length ){
+                        i++; 
+                    $('#display-word').addClass("show").removeClass("hide").html(`<h2>${arrOfWords[i-1][0]}</h2>`);
                     $('.user-input').removeClass("hide");
                     $('#user-answer').addClass("show").removeClass("hide");
                     $('#next').removeClass("show").addClass("hide");
                     $('#correct').removeClass("show").addClass("hide");
                     $('#incorrect').removeClass("show").addClass("hide");
                     show = !show;
+                    console.log(i);
+                    } else if (i = arrOfWords.length - 1) {
+                        console.log("test");
+                    }
+                    
                 });
 
             });
-            //console.log(arrOfWords);   
-            //console.log(i);
     });
 }
 
