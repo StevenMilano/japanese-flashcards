@@ -14,18 +14,19 @@ function numOfWords () {
     //recieves amount of words user wants and picks randomly from given csv
         num = $('#num-of-words').val();
         totalQuestions = num;
+        console.log(num, totalQuestions);
         getData.then(data=>{
+            console.log(num, totalQuestions);
             var result = Papa.parse(data);
                 for (let j = 0; j < num; j++) {
                     let randNum = Math.floor(Math.random() * result.data.length);
                     arrOfWords = [...arrOfWords, result.data[randNum]]; 
                 }
             });
-
-        getData.then(data=>{
             console.log(num, totalQuestions);
+            var values = $(this).serialize(); console.log("test", values)
+        getData.then(data=>{
             $('#current-score').html(`${correctAns}/${num}`);
-            console.log(i);
             if (show){
                 $('#display-word').html(`<h2>${arrOfWords[i][0]}</h2>`);
             }
@@ -42,7 +43,6 @@ function numOfWords () {
             $('.submit-btn').on('click', event =>{
                 show = !show;
                 answer = $('#user-answer').val();
-                console.log("debug", answer, arrOfWords, i);
                     if (i < arrOfWords.length && answer == arrOfWords[i][1]) {
                         $('#correct').addClass("show").removeClass("hide");
                         $('#display-word').html('');
@@ -50,6 +50,7 @@ function numOfWords () {
                         $('.user-input').removeClass(".user-input").addClass("hide");
                         $('#next').addClass("show").removeClass("hide");
                         $('#user-answer').val('');
+                        correctAns++;
                     } else if(i < arrOfWords.length && answer != arrOfWords[i][1]) {
                         $('#incorrect').addClass("show").removeClass("hide");
                         $('#display-word').html('');
@@ -77,7 +78,6 @@ function numOfWords () {
                         $('#correct').removeClass("show").addClass("hide");
                         $('#incorrect').removeClass("show").addClass("hide");
                         show = !show;
-                        console.log(i);
                     } else  {
                         $('#next').removeClass("show").addClass("hide");
                         $('#correct').removeClass("show").addClass("hide");
@@ -98,5 +98,6 @@ function handleFlashcards() {
 $('.user-input').submit(event => {
     event.preventDefault(); 
     handleFlashcards();
+    console.log("test");
 });
 
