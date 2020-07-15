@@ -2,6 +2,10 @@
     font-family: 'Noto Sans JP', sans-serif;
 }
 
+.hide {
+    display: none;
+}
+
 body {
     background-color: lightgrey;
 }
