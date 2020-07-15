@@ -57,14 +57,14 @@ function numOfWords () {
                                 <p>The correct answer is:</p>
                                 <h2>${arrOfWords[i][1]}</h2>
                         `);
+                        console.log("test");
                     // } else {
                         
                     }  
 
                 $('#next').on('click', event => {
                     event.preventDefault();
-                    if (i < arrOfWords.length - 1 ){
-                        i++; 
+                    if (i < arrOfWords.length){
                         console.log(i);
                         $('#display-word').addClass("show").removeClass("hide").html(`<h2>${arrOfWords[i][0]}</h2>`);
                         $('#user-input').addClass("show").removeClass("hide");
@@ -73,7 +73,8 @@ function numOfWords () {
                         $('#correct').removeClass("show").addClass("hide");
                         $('#incorrect').removeClass("show").addClass("hide");
                         show = !show;
-                    } else if (i == arrOfWords.length) {
+                        i++; 
+                    } else if (i === arrOfWords.length) {
                         $('#incorrect').removeClass("show").addClass("hide");
                         $('#correct').removeClass("show").addClass("hide");
                         $('#final-score').addClass("show").removeClass("hide");
