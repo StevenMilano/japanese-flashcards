@@ -65,21 +65,21 @@ function numOfWords () {
                         $('#display-word').addClass("show").removeClass("hide").html(`<h2>${arrOfWords[i][0]}</h2>`);
                         $('#user-input').addClass("show").removeClass("hide");
                         $('#user-answer').addClass("show").removeClass("hide");
-                        // $('#next').removeClass("show").addClass("hide");
-                        // $('#correct').removeClass("show").addClass("hide");
-                        // $('#incorrect').removeClass("show").addClass("hide");
-                        // show = !show;
+                        $('#next').removeClass("show").addClass("hide");
+                        $('#correct').removeClass("show").addClass("hide");
+                        $('#incorrect').removeClass("show").addClass("hide");
+                        show = !show;
                         i++; 
                     } else if (i === arrOfWords.length - 1) {
                         console.log("test");
-                        // $('#incorrect').removeClass("show").addClass("hide");
-                        // $('#correct').removeClass("show").addClass("hide");
-                        // $('#final-score').addClass("show").removeClass("hide");
-                        // $(this).prop('value', 'Play again');
-                        // $('#correct').removeClass("show").addClass("hide");
-                        // $('#incorrect').removeClass("show").addClass("hide");
+                        $('#incorrect').removeClass("show").addClass("hide");
+                        $('#correct').removeClass("show").addClass("hide");
+                        $('#final-score').addClass("show").removeClass("hide");
+                        $(this).prop('value', 'Play again');
+                        $('#correct').removeClass("show").addClass("hide");
+                        $('#incorrect').removeClass("show").addClass("hide");
                     }
-                    return false;
+                    $(this).off(event);
                 });
 
             });
