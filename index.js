@@ -16,27 +16,20 @@ function numOfWords () {
         totalQuestions = num;
         console.log(num, totalQuestions);
         getData.then(data=>{
-            console.log(num, totalQuestions);
             var result = Papa.parse(data);
                 for (let j = 0; j < num; j++) {
                     let randNum = Math.floor(Math.random() * result.data.length);
                     arrOfWords = [...arrOfWords, result.data[randNum]]; 
                 }
             });
-            console.log(num, totalQuestions);
-            var values = $(this).serialize(); console.log("test", values)
+
         getData.then(data=>{
             $('#current-score').html(`${correctAns}/${num}`);
             if (show){
                 $('#display-word').html(`<h2>${arrOfWords[i][0]}</h2>`);
             }
-
-            $('.user-input').html(`
-                <label  for="user-answer" class="screen-reader-text" aria-required="true">Answer</label>
-                <input class="show" type="text" name="user-answer" id="user-answer" placeholder="Answer">
-                <input class="submit-btn" type="submit" value="submit">
-            `)
-                        
+            $('#number-input').removeClass("show").addClass("hide"); 
+            $('#user-input').addClass("show").removeClass("hide");           
             $('#display-word').addClass("show").removeClass("hide");
             $('#num-of-words-header').removeClass("show").addClass("hide");
 
@@ -47,14 +40,14 @@ function numOfWords () {
                         $('#correct').addClass("show").removeClass("hide");
                         $('#display-word').html('');
                         $('#user-answer').removeClass("show").addClass("hide");
-                        $('.user-input').removeClass(".user-input").addClass("hide");
+                        $('#user-input').removeClass("show").addClass("hide");
                         $('#next').addClass("show").removeClass("hide");
                         $('#user-answer').val('');
                         correctAns++;
                     } else if(i < arrOfWords.length && answer != arrOfWords[i][1]) {
                         $('#incorrect').addClass("show").removeClass("hide");
                         $('#display-word').html('');
-                        $('.user-input').removeClass(".user-input").addClass("hide");
+                        $('#user-input').removeClass("show").addClass("hide");
                         $('#user-answer').removeClass("show").addClass("hide").val('');
                         $('#next').addClass("show").removeClass("hide");
                         $('#incorrect').html(`
@@ -72,7 +65,7 @@ function numOfWords () {
                     if (i < arrOfWords.length - 1 ){
                         i++; 
                         $('#display-word').addClass("show").removeClass("hide").html(`<h2>${arrOfWords[i][0]}</h2>`);
-                        $('.user-input').removeClass("hide");
+                        $('#user-input').addClass("show").removeClass("hide");
                         $('#user-answer').addClass("show").removeClass("hide");
                         $('#next').removeClass("show").addClass("hide");
                         $('#correct').removeClass("show").addClass("hide");
@@ -95,7 +88,7 @@ function handleFlashcards() {
     numOfWords();
 }
 
-$('.user-input').submit(event => {
+$('#number-input').submit(event => {
     event.preventDefault(); 
     handleFlashcards();
     console.log("test");
