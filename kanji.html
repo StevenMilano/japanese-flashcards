@@ -31,9 +31,15 @@
             <h2 class="hide" id="final-score">Your final score is:</h2>
             <p class="show" id="current-score"></p>
             <input type='button' value='Next' id='next' class="hide">
-            <form class="user-input">
+
+            <form class="show" id="number-input">
                 <label  for="num-of-words" class="screen-reader-text" aria-required="true">Select a number of Vocab words.</label>
                 <input class="show" id="num-of-words" type="text" name="num-of-words" placeholder="Select a number of Vocab words.">
+                <input class="submit-btn" type="submit" value="submit">
+            </form>
+            <form class ="hide" id ="user-input">
+                <label  for="user-answer" class="screen-reader-text" aria-required="true">Answer</label>
+                <input class="show" type="text" name="user-answer" id="user-answer" placeholder="Answer">
                 <input class="submit-btn" type="submit" value="submit">
             </form>
         </div>
