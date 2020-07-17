@@ -15,11 +15,10 @@
         <h1>Japanese Flash Cards</h1>
         <h3>日本語フラッシュカード</h2>
         
-            <nav class="links">
+            <!-- <nav class="links">
                 <div class="footer-btn"><a href="kanji.html">Kanji</a></div>
                 <div class="footer-btn"><a href="hirigana.html">Hirigana Vocab</a></div>
-                <div class="footer-btn"><a href="romanji.html">Romanji Vocab</a></div>
-            </nav>
+            </nav> -->
     </header>
 
         <main>
@@ -29,9 +28,11 @@
                 <h2 class="hide" id="correct">Correct!</h2>
                 <h2 class="hide" id="incorrect">The correct answer is:</h2>
                 <h2 class="hide" id="final-score">Your final score is:</h2>
-                <p class="show" id="current-score"></p>
+                <p class="show" id="current-question"></p>
+                <p class="hide" id="current-score"></p>
 
                 <button id='next' class="hide">Next</button>
+                <button id='playAgain' class="hide">Play agian</button>
 
                 <form class="show" id="number-input">
                     <label  for="num-of-words" class="screen-reader-text" aria-required="true">Select a number of Vocab words.</label>
