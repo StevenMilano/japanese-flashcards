@@ -91,26 +91,17 @@ function numOfWords () {
                     //There when the next button is pressed it goes through this if statement twice for some reason. This prevents that
                     $(this).off(event);
                 });
-
-                $('#playAgain').on('click', event => {
-                    i = 0;
-                    currentScore = 0;
-                    num = 0;
-                    currentQuestion = 1;
-                    $('#display-word').html('');
-                    $('#user-answer').val('');
-                    $('#num-of-words').val('');
-                    $('#current-question').html(`${currentQuestion}/${num}`);
-                    $('#number-input').addClass("show").removeClass("hide");
-                    $('#num-of-words-header').addClass("show").removeClass("hide");            
-                    $('#final-score').removeClass("show").addClass("hide");
-                    $('#current-score').removeClass("show").addClass("hide");
-                    $('#playAgain').removeClass("show").addClass("hide");
-                });
             });
+            reset();
     });
 }
 
+//executes when play again is pressed
+function reset() {
+    $('#playAgain').on('click', event => {
+        window.location.reload(false); 
+    });
+}
 
 function handleFlashcards() {
     numOfWords();
