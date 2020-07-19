@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Japanese Flash Cards</title>
+</head>
+
+<body>
+    <header>
+        <h1>Japanese Flash Cards</h1>
+        <h3>日本語フラッシュカード</h2>
+        
+            <!-- <nav class="links">
+                <div class="footer-btn"><a href="kanji.html">Kanji</a></div>
+                <div class="footer-btn"><a href="hirigana.html">Hirigana Vocab</a></div>
+            </nav> -->
+    </header>
+
+        <main>
+            <div class="box">
+                <h2 class="show" id="num-of-words-header">How many words would you like to study</h2>
+                <h2 class="hide" id="display-word">Vocab Word here</h2>
+                <h2 class="hide" id="correct">Correct!</h2>
+                <h2 class="hide" id="incorrect">The correct answer is:</h2>
+                <h2 class="hide" id="final-score">Your final score is:</h2>
+                <p class="show" id="current-question"></p>
+                <p class="hide" id="current-score"></p>
+
+                <button id='next' class="hide">Next</button>
+                <button id='playAgain' class="hide">Play agian</button>
+
+                <form class="show" id="number-input">
+                    <label  for="num-of-words" class="screen-reader-text" aria-required="true">Select a number of Vocab words.</label>
+                    <input class="show" id="num-of-words" type="text" name="num-of-words" placeholder="Select a number of Vocab words.">
+                    <input class="submit-btn" type="submit" value="submit">
+                </form>
+                
+                <form class ="hide" id ="user-input">
+                    <label  for="user-answer" class="screen-reader-text" aria-required="true">Answer</label>
+                    <input class="show" type="text" name="user-answer" id="user-answer" placeholder="Answer">
+                    <input class="submit-btn" type="submit" value="submit">
+                </form>
+            </div>
+        </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="papaparse.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
