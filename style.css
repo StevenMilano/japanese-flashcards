@@ -2,8 +2,12 @@
     font-family: 'Noto Sans JP', sans-serif;
 }
 
+.hide {
+    display: none;
+}
+
 body {
-    background-color: lightgrey;
+    background-color: #24a3ed;
 }
 
 .screen-reader-text { 
@@ -26,18 +30,20 @@ header {
 }
 
 h1 {
+    color: white;
     margin-bottom: -10px;
     font-weight: 700;
     font-size: 32pt;
 }
 
 h3 {
+    color: white;
     font-weight: 700;
-    font-size: 14pt;
-    letter-spacing: 2px;
+    font-size: 18pt;
+    letter-spacing: 3px;
 }
 
-nav {
+/* nav {
     display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -51,7 +57,7 @@ nav a {
     font-size: 16;
     text-align: center;
     margin-right: 20px;
-}
+} */
 
 main {
     display: flex;
@@ -59,21 +65,61 @@ main {
 }
 
 .box {
-    background-color: white;
+    background-color: #fdfff7;
     margin: auto;
     padding: 50px 50px;
+    text-align: center;
 }
 
 h2 {
+    color: #2d2e2c;
     font-weight: 700;
     font-size: 24pt;
     letter-spacing: 2px;
     margin-top: -30px;
 }
 
+h4 {
+    color: #50514f;
+    font-weight: 400;
+    font-size: 16pt;
+    margin-top: -20px;
+}
+
 form {
     display: flex;
     flex-direction: column;
+    
+}
+
+#num-of-words {
+    border: none;
+    border-bottom: 2px solid #24a3ed;
+    background-color: #fdfff7;
+}
+
+#user-answer {
+    border: none;
+    border-bottom: 2px solid #24a3ed;
+    background-color: #fdfff7;
+}
+
+button {
+    border: none;
+    background-color: #24a3ed;
+    color: white;
+    width: 150px;
+    height: 50px;
+}
+
+.submit-btn {
+    border: none;
+    background-color: #24a3ed;
+    color: white;
+    width: 150px;
+    height: 50px;
+    vertical-align: center;
+    line-height: 0px;
 }
 
 input {
